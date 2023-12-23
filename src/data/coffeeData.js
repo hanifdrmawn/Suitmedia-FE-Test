@@ -23,7 +23,8 @@ function CoffeeList() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const data = await getAllDataCoffee();
+                let data = await getAllDataCoffee();
+                data = data.sort((a, b) => a.title.localeCompare(b.title));
                 setCoffeeData(data);
                 setCount(data.length);
             } catch (error) {
