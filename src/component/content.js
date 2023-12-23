@@ -28,7 +28,7 @@ export default function Content() {
     const currentPosts = article.slice(indexOfFirstPost, indexOfLastPost);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    
+
 function CoffeeData() {
     const [coffeeData, setCoffeeData] = useState([]);
 
@@ -83,6 +83,18 @@ function CoffeeData() {
             </div>
             <div id="content" class="content-main">
                 <CoffeeList />
+            </div>
+            <div class="font-center m-auto text-center">
+                <div class="pagination text-center">
+                    <a href="#">&laquo;</a>
+                    <a class="active" id="pag1" href="#">1</a>
+                    <a id="pag2" className='cursor-pointer'>2</a>
+                    <a id="pag3" className='cursor-pointer'>3</a>
+                    <a id="pag4" className='cursor-pointer'>4</a>
+                    <a id="pag5" className='cursor-pointer'>5</a>
+                    <a id="pag6" className='cursor-pointer'>6</a>
+                    <a href="#">&raquo;</a>
+                </div>
             </div>
         </div>
     );
