@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import '../App.css';
 import '../script.js';
 import logo from '../img/suitmedia_logo.png';

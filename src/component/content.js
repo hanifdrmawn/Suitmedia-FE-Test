@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Form, Container, Pagination } from 'react-bootstrap';
-import ReactDOM from 'react-dom/client';
 import '../App.css';
 import '../script.js';
-import banner from '../img/banner.jpg';
-import Error from '../component/Error';
-import Loading from '../component/Loading';
 import { getAllDataCoffee } from '../data/Coffee';
 import CoffeeList from '../data/coffeeData.js';
 import data from '../data/coffeeData.js';
-
-
-
-
 
 export default function Content() {
     const [search, setSearch] = useState('');

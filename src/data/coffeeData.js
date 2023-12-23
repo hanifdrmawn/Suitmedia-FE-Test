@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Pagination } from 'react-bootstrap';
-import ReactDOM from 'react-dom/client';
 import '../App.css';
 import '../script.js';import { getAllDataCoffee } from '../data/Coffee';
 import '../component/content.js';
+import Error from '../component/Error';
+import Loading from '../component/Loading';
 
 function CoffeeList() {
     const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -19,8 +19,11 @@ function CoffeeList() {
     const currentPosts = coffeeData.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     const totalPages = Math.ceil(coffeeData.length / itemsPerPage);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
+        setLoading(true);
         async function fetchData() {
             try {
                 let data = await getAllDataCoffee();
@@ -28,12 +31,19 @@ function CoffeeList() {
                 setCoffeeData(data);
                 setCount(data.length);
             } catch (error) {
-                console.error('Error fetching coffee data:', error);
+                setError(error);
+            } finally{
+                setLoading(false);
             }
         }
 
         fetchData();
     }, []);
+
+    if (loading) return (
+        <Loading />
+    );
+    if (error) return <Error />;
 
     const changeTextShow = (a) => {
         var dropbtn = document.getElementById('dropbtn');

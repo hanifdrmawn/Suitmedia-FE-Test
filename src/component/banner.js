@@ -1,10 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useEffect } from 'react';
 import '../App.css';
 import '../script.js';
-import banner from '../img/banner.jpg';
 
 export default function Banner() {
+    useEffect(() => {
+        const background = document.querySelector('.background-image');
+        const text = document.querySelector('.centered-text');
+    
+        const handleScroll = () => {
+            const scrollValue = window.scrollY;
+            background.style.transform = `translateY(-${scrollValue * 0.1}px)`;
+            text.style.transform = `translateY(-${scrollValue * 0.3}px)`;
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
         <div className="banner relative flex items-center justify-center h-screen">
             <div className="background-image absolute w-full h-full bg-no-repeat bg-center bg-cover"></div>
@@ -16,4 +30,3 @@ export default function Banner() {
         </div>
     );
 }
-
