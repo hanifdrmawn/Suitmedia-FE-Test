@@ -47,9 +47,11 @@ function CoffeeList() {
         var dropbuttondrop = document.getElementById('dropbuttondrop');
         if(order=='asc') {
             dropbuttondrop.innerText = 'A - Z';
+            setCoffeeData([...coffeeData.sort((a, b) => a.title.localeCompare(b.title))]);
         }
         else if(order=='desc') {
             dropbuttondrop.innerText = 'Z - A';
+            setCoffeeData([...coffeeData.sort((a, b) => b.title.localeCompare(a.title))]);
         }
     }
 
