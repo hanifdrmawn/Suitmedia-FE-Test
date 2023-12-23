@@ -28,6 +28,7 @@ export default function Content() {
     const currentPosts = article.slice(indexOfFirstPost, indexOfLastPost);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    
 function CoffeeData() {
     const [coffeeData, setCoffeeData] = useState([]);
 
