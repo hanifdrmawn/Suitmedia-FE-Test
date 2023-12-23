@@ -90,9 +90,6 @@ function CoffeeData() {
                     <a class="active" id="pag1" href="#">1</a>
                     <a id="pag2" className='cursor-pointer'>2</a>
                     <a id="pag3" className='cursor-pointer'>3</a>
-                    <a id="pag4" className='cursor-pointer'>4</a>
-                    <a id="pag5" className='cursor-pointer'>5</a>
-                    <a id="pag6" className='cursor-pointer'>6</a>
                     <a href="#">&raquo;</a>
                 </div>
             </div>
