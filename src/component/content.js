@@ -54,7 +54,7 @@ function CoffeeData() {
         <div className="content m-16">
             <div className="filter flex justify-between">
                 <div className="showing">
-                    <p>Showing 1-<span id="show-end">10</span> of 20</p>
+                    <p className='m-auto'>Showing 1-<span id="show-end">10</span> of 20</p>
                 </div>
                 <div className="input flex gap-6">
                     <div className="show flex gap-1">
@@ -82,13 +82,6 @@ function CoffeeData() {
             </div>
             <div id="content" class="content-main">
                 <CoffeeList />
-                {/* <div class="content-box break-inside-avoid rounded border h-[350px] shadow-lg mb-6">
-                    <img class="rounded-t w-full max-h-96" src={banner} />
-                    <div class="content-text m-4">
-                        <p class="date text-gray-400">5 September 2022</p>
-                        <h2 class="content-tittle font-medium text-xl">Kenali Tingkatan Influencers berdasarkan Jumlah Followes</h2>
-                    </div>
-                </div> */}
             </div>
         </div>
     );

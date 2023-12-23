@@ -23,7 +23,7 @@ function CoffeeList() {
     }, []);
     
     return (
-        <div id="content" className="columns-4 my-10">
+        <div id="content" className="columns-4 my-10 max-md:columns-2 max-sm:columns-1">
             {coffeeData.map((coffee) => (
                 <div key={coffee.id} className="content-box break-inside-avoid rounded border h-[350px] shadow-lg mb-6">
                     <img className="rounded-t w-full max-h-40 object-cover" src={coffee.image} alt={coffee.title} />
