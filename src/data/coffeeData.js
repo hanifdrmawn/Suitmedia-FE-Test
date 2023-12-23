@@ -10,18 +10,14 @@ function CoffeeList() {
     const [coffeeData, setCoffeeData] = useState([]);
     const [count, setCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(10);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentCoffeeData = coffeeData.slice(indexOfFirstItem, indexOfLastItem);
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = coffeeData.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     const totalPages = Math.ceil(coffeeData.length / itemsPerPage);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    
+
     useEffect(() => {
         setLoading(true);
         async function fetchData() {
@@ -65,12 +61,18 @@ function CoffeeList() {
             setCoffeeData([...coffeeData.sort((a, b) => b.title.localeCompare(a.title))]);
         }
     }
+    const showingText = (a) => {
+        var showstart = document.getElementById('show-start');
+        var showend = document.getElementById('show-end');
+        showstart.innerText = itemsPerPage*a-itemsPerPage+1;
+        showend.innerText = itemsPerPage*a;
+    }
 
     return (
         <div className='content-main'>
             <div className='filter flex justify-between'>
             <div className="showing">
-                    <p className='m-auto'>Showing 1-<span id="show-end">10</span> of {count}</p>
+                    <p className='m-auto'>Showing <span id='show-start'>1</span>-<span id="show-end">10</span> of {count}</p>
                 </div>
                 <div className="input flex gap-6">
                     <div className="show flex gap-1">
@@ -109,15 +111,15 @@ function CoffeeList() {
             </div>
             <div className='font-center m-auto text-center'>
                 <div className="pagination text-center">
-                    <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+                    <button onClick={() => {paginate(currentPage - 1); showingText(currentPage - 1)} } disabled={currentPage === 1}>
                         &laquo;
                     </button>
                     {Array.from({ length: totalPages }, (_, i) => (
-                        <button key={i + 1} onClick={() => paginate(i + 1)} className={currentPage === i + 1 ? 'active' : ''}>
+                        <button key={i + 1} onClick={() => {paginate(i + 1); showingText(i + 1)}}  className={currentPage === i + 1 ? 'active' : ''}>
                             {i + 1}
                         </button>
                     ))}
-                    <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
+                    <button onClick={() => {paginate(currentPage + 1); showingText(currentPage + 1)}} disabled={currentPage === totalPages}>
                         &raquo;
                     </button>
                 </ div>
